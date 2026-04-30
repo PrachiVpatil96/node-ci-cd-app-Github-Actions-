@@ -44,7 +44,9 @@ jobs:
           echo "Building Docker image..."
           docker build -t app .
 
-          docker tag app:latest $DOCKER_USERNAME/nodejs:latest
+          docker tag app:latest ${{ secrets.DOCKER_USERNAME }}/nodejs:latest
+
+          
 
           echo "Pushing Docker image..."
-          docker push $DOCKER_USERNAME/nodejs:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/nodejs:latest
