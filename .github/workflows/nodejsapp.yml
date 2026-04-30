@@ -36,5 +36,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t $DOCKER_USERNAME/nodejs:latest .
-          docker push $DOCKER_USERNAME/nodejs:latest
+              echo "Building Docker image..."
+              docker build -t ${DOCKER_USERNAME}/nodejs:latest .
+
+              echo "Pushing Docker image..."
+              docker push ${DOCKER_USERNAME}/nodejs:latest
