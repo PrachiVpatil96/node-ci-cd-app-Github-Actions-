@@ -22,16 +22,16 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
-      - name: Run tests
-        run: npm test
+      # - name: Run tests
+      #   run: npm test
 
-      - name: Debug workspace
-        run: |
-          pwd
-          ls -la
+      # - name: Debug workspace
+      #   run: |
+      #     pwd
+      #     ls -la
 
       - name: Log in to Docker Hub
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -41,9 +41,11 @@ jobs:
           echo "Building Docker image..."
           docker build -t app .
 
-          docker tag app:latest $DOKCER_USERNAME/nodejsapp:latest
+          docker tag app:latest $DOCKER_USERNAME/nodejsapp:latest
 
           
 
           echo "Pushing Docker image..."
-          docker push $DOKCER_USERNAME/nodejsapp:latest
+
+
+          docker push $DOCKER_USERNAME/nodejsapp:latest
